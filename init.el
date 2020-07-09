@@ -138,10 +138,16 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
+       
+       ;; ORG MODE
+       ;; org +brain +dragndrop +gnuplot +hugo +ipython +journal +jupyter +noter +pandoc +pomodoro +present +roam
+       ;; https://github.com/hlissner/doom-emacs/blob/develop/docs/modules.org
+
        (org                ; organize your plain life in plain text
         +dragndrop         ; drag & drop files/images into org
         +jupyter           ; ipython/jupyter support for babel
         +present)          ; organize your plain life in plain text
+
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more

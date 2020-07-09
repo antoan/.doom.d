@@ -63,7 +63,8 @@
 ;;                           "* [ ] %?\n%i" :prepend t :kill-buffer t))
 ;;  +doom-dashboard-banner-file (expand-file-name "logo.png" doom-private-dir)
 ;;  +org-capture-todo-file "tasks.org")
-; see https://github.com/zaiste/.doom.d/blob/master/config.el
+;; see https://github.com/zaiste/.doom.d/blob/master/config.el
+
 (org-super-agenda-mode t)
 (setq
  org-super-agenda-groups '((:name "Emacs"
@@ -73,10 +74,6 @@
                            (:name "JDAM"
                                   :tag "jdam")
                            ))
-;; ROSEMACS
-(add-to-list 'load-path "/opt/ros/melodic/share/emacs/site-lisp")
-;; or whatever your install space is + "/share/emacs/site-lisp"
-(require 'rosemacs-config)
 
 ;; Org-Mode config
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
@@ -89,3 +86,8 @@
 
 ;; Pocket Reader - https://github.com/alphapapa/pocket-reader.el
 (require 'pocket-reader)
+
+;; ROSEMACS
+(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
+;; or whatever your install space is + "/share/emacs/site-lisp"
+(require 'rosemacs-config)
