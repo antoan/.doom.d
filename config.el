@@ -27,7 +27,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "/mnt/Blue/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -88,6 +88,6 @@
 (require 'pocket-reader)
 
 ;; ROSEMACS
-(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
-;; or whatever your install space is + "/share/emacs/site-lisp"
-(require 'rosemacs-config)
+;;(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
+
+;;(require 'rosemacs-config)
