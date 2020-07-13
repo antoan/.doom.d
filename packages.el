@@ -32,7 +32,7 @@
 (package! icicles)
 (package! dired+)
 (package! helm-tramp)
-(package! yasnippet-snippets)
+
 
 
 ;; To install a package directly from a particular repo, you'll need to specify
