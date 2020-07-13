@@ -27,6 +27,14 @@
 (package! pocket-reader)
 (package! helm-ag)
 (package! org-ref)
+(package! exec-path-from-shell)
+(package! bookmark+)
+(package! icicles)
+(package! dired+)
+(package! helm-tramp)
+(package! yasnippet-snippets)
+
+
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format
