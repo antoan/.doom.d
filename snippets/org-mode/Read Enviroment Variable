@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:Read Enviroment Variable
+# key: lgetenv
+# --
+ (exec-path-from-shell-copy-env "EMACS_CONTEXT")
