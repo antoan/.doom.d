@@ -32,6 +32,7 @@
 (package! icicles)
 (package! dired+)
 (package! helm-tramp)
+(package! org-bookmark-heading)
 
 
 
