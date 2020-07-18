@@ -33,6 +33,9 @@
 (package! dired+)
 (package! helm-tramp)
 (package! org-bookmark-heading)
+(package! exwm)
+(package! helm-dash)
+(package! worf)
 
 
 
