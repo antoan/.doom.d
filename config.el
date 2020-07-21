@@ -95,3 +95,5 @@
 ;; [[https://github.com/purcell/exec-path-from-shell][purcell/exec-path-from-shell: Make Emacs use the $PATH set up by the user's shell]]
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+
+(use-package! org-roam-protocol)

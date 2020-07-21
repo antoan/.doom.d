@@ -36,6 +36,9 @@
 (package! exwm)
 (package! helm-dash)
 (package! worf)
+(package! org-roam-server)
+(package! yankpad)
+
 
 
 
