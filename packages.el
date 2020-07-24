@@ -23,10 +23,17 @@
 (package! org-ql)
 (package! org-sidebar)
 (package! helm-org-rifle)
+(package! org-ref)
+(package! org-journal)
 (package! evil-tutor)
+(unpin! org-roam)
+(package! org-roam-server)
+(package! org-roam-bibtex
+  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+(package! company-org-roam
+  :recipe (:host github :repo "jethrokuan/company-org-roam"))
 (package! pocket-reader)
 (package! helm-ag)
-(package! org-ref)
 (package! exec-path-from-shell)
 (package! bookmark+)
 (package! icicles)
@@ -36,12 +43,13 @@
 (package! exwm)
 (package! helm-dash)
 (package! worf)
-(unpin! org-roam)
-(package! org-roam-server)
 (package! yankpad)
 (package! emms)
-(package! org-journal)
-
+(package! git-link)
+(package! yaml-mode)
+(package! gif-screencast
+  :recipe (:host gitlab :repo "ambrevar/emacs-gif-screencast"))
+(package! outshine)
 
 
 

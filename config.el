@@ -96,6 +96,25 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
+;; https://org-roam.readthedocs.io/en/master/configuration/
+;; ORG ROAM config
+;; (setq org-roam-directory "/path/to/org/")
+(use-package! org-roam)
+
+
+;; You can then bind org-roam-jump-to-index in your configuration to access it (see Basic Install and Configuration to review how to set key-bindings).
+;; (setq org-roam-index-file "index.org")
+
+(setq org-roam-graph-viewer "/usr/bin/chromium-browser")
+
+;; Things to exclude from graph
+;; (setq org-roam-graph-exclude-matcher '("private" "dailies"))
+
+;;Other options included 'ido, and 'ivy'.
+(setq org-roam-completion-system 'helm)
+
+;; Encryption (via GPG) can be enabled for all new files by setting org-roam-encrypt-files to t.
+
 (server-start)
 (use-package! org-protocol)
 (use-package! org-roam-protocol)
