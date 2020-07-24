@@ -36,8 +36,12 @@
 (package! exwm)
 (package! helm-dash)
 (package! worf)
+(unpin! org-roam)
 (package! org-roam-server)
 (package! yankpad)
+(package! emms)
+(package! org-journal)
+
 
 
 

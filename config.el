@@ -85,7 +85,7 @@
 (setq org-goto-interface 'outline-path-completion)
 
 ;; Pocket Reader - https://github.com/alphapapa/pocket-reader.el
-(require 'pocket-reader)
+(use-package! pocket-reader)
 
 ;; ROSEMACS
 ;;(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
@@ -96,4 +96,32 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
+(server-start)
+(use-package! org-protocol)
 (use-package! org-roam-protocol)
+
+(use-package! org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-export-inline-images t
+        org-roam-server-authenticate nil
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages (quote (org-roam-server))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
