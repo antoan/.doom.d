@@ -50,7 +50,11 @@
 (package! gif-screencast
   :recipe (:host gitlab :repo "ambrevar/emacs-gif-screencast"))
 (package! outshine)
-
+;;(package! smex)
+(package! shell-pop)
+(package! undo-tree)
+(package! dumb-jump)
+(package! elfeed)
 
 
 
