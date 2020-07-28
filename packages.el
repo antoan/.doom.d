@@ -55,7 +55,7 @@
 (package! undo-tree)
 (package! dumb-jump)
 (package! elfeed)
-
+(package! deadgrep)
 
 
 ;; To install a package directly from a particular repo, you'll need to specify

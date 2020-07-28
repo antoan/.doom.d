@@ -65,6 +65,25 @@
 ;;  +org-capture-todo-file "tasks.org")
 ;; see https://github.com/zaiste/.doom.d/blob/master/config.el
 
+;; DIRED https://github.com/jethrokuan/dots/blob/master/.doom.d/config.el
+(after! dired
+  (setq dired-listing-switches "-aBhl  --group-directories-first"
+        dired-dwim-target t
+        dired-recursive-copies (quote always)
+        dired-recursive-deletes (quote top)))
+
+(use-package! dired-narrow
+  :commands (dired-narrow-fuzzy)
+  :init
+  (map! :map dired-mode-map
+        :desc "narrow" "/" #'dired-narrow-fuzzy))
+
+(use-package! deadgrep
+  :if (executable-find "rg")
+  :init
+  (map! "M-s" #'deadgrep))
+
+
 (org-super-agenda-mode t)
 (setq
  org-super-agenda-groups '((:name "Emacs"
