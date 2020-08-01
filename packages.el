@@ -37,7 +37,16 @@
 (package! exec-path-from-shell)
 (package! bookmark+)
 (package! icicles)
+;; DIRED
 (package! dired+)
+(package! dired-hacks-utils)
+(package! dired-filter)
+(package! dired-rainbow)
+(package! dired-avfs)  ;; Adds avfs support for seamless archive browsing.
+(package! dired-subtree)
+(package! dired-ranger)
+(package! dired-narrow)
+(package! dired-open)
 (package! quick-preview)
 (package! helm-tramp)
 (package! org-bookmark-heading)
