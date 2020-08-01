@@ -38,6 +38,7 @@
 (package! bookmark+)
 (package! icicles)
 (package! dired+)
+(package! quick-preview)
 (package! helm-tramp)
 (package! org-bookmark-heading)
 (package! exwm)
@@ -56,7 +57,12 @@
 (package! dumb-jump)
 (package! elfeed)
 
-
+;; (package! s) ;;https://github.com/magnars/s.el
+;; (package! s
+;;   :recipe (:host github :repo "magnars/s.el"))
+;; (package! org-protocol-capture-html
+;;  :recipe (:host github :repo "alphapapa/org-protocol-capture-html"))
+;; (package! dired-subtree)
 
 ;; To install a package directly from a particular repo, you'll need to specify
 ;; a `:recipe'. You'll find documentation on what `:recipe' accepts here:

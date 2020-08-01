@@ -33,6 +33,24 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; https://docs.projectile.mx/projectile/index.html
+(setq projectile-project-search-path '("~/dev/"))
+
+(use-package! smartparens
+  :init
+  (map! :map smartparens-mode-map
+        "C-M-f" #'sp-forward-sexp
+        "C-M-b" #'sp-backward-sexp
+        "C-M-u" #'sp-backward-up-sexp
+        "C-M-d" #'sp-down-sexp
+        "C-M-p" #'sp-backward-down-sexp
+        "C-M-n" #'sp-up-sexp
+        "C-M-s" #'sp-splice-sexp
+        "C-)" #'sp-forward-slurp-sexp
+        "C-}" #'sp-forward-barf-sexp
+        "C-(" #'sp-backward-slurp-sexp
+        "C-M-)" #'sp-backward-slurp-sexp
+        "C-M-)" #'sp-backward-barf-sexp))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -65,6 +83,10 @@
 ;;  +org-capture-todo-file "tasks.org")
 ;; see https://github.com/zaiste/.doom.d/blob/master/config.el
 
+(setq org-capture-templates '(("w" "Web site" entry
+  (file "")
+  "* %a :website:\n\n%U %?\n\n%:initial")))
+
 (org-super-agenda-mode t)
 (setq
  org-super-agenda-groups '((:name "Emacs"
@@ -84,8 +106,27 @@
 
 (setq org-goto-interface 'outline-path-completion)
 
+
+
+
 ;; Pocket Reader - https://github.com/alphapapa/pocket-reader.el
 (use-package! pocket-reader)
+
+(use-package! undo-tree
+  :ensure t
+  :init
+  (setq undo-limit 78643200)
+  (setq undo-outer-limit 104857600)
+  (setq undo-strong-limit 157286400)
+  (setq undo-tree-mode-lighter " UN")
+  (setq undo-tree-auto-save-history t)
+  (setq undo-tree-enable-undo-in-region nil)
+  (setq undo-tree-history-directory-alist '(("." . "~/emacs.d/undo")))
+ (add-hook 'undo-tree-visualizer-mode-hook (lambda ()
+                                              (undo-tree-visualizer-selection-mode)
+                                              (setq display-line-numbers nil)))
+  :config
+  (global-undo-tree-mode 1)) ;; https://www.emacswiki.org/emacs/UndoTree
 
 ;; ROSEMACS
 ;;(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
@@ -96,8 +137,8 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-;; https://org-roam.readthedocs.io/en/master/configuration/
 ;; ORG ROAM config
+;; https://org-roam.readthedocs.io/en/master/configuration/
 ;; (setq org-roam-directory "/path/to/org/")
 (use-package! org-roam)
 
@@ -115,9 +156,11 @@
 
 ;; Encryption (via GPG) can be enabled for all new files by setting org-roam-encrypt-files to t.
 
-(server-start)
+
 (use-package! org-protocol)
 (use-package! org-roam-protocol)
+;; (use-package! s)
+;; (use-package! org-protocol-capture-html)
 
 (use-package! org-roam-server
   :ensure t
@@ -132,6 +175,52 @@
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
 
+(server-start)
+
+;; DIRED
+;; https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline7
+(use-package dired
+   :config
+   (setq dired-listing-switches "-lFaGh1v --group-directories-first")
+   (setq dired-ls-F-marks-symlinks t)
+   (setq ls-lisp-dirs-first t)
+   (setq dired-recursive-copies 'always)
+   (setq dired-recursive-deletes 'always))
+
+;; http://xenodium.com/drill-down-emacs-dired-with-dired-subtree/
+(use-package! dired-subtree :ensure t
+  :after dired
+  :config
+  (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
+  (bind-key "<backtab>" #'dired-subtree-cycle dired-mode-map))
+
+(use-package! dired-narrow
+  :after dired
+  :commands (dired-narrow-fuzzy)
+  :init
+  (map! :map dired-mode-map
+        :desc "narrow" "/" #'dired-narrow-fuzzy))
+(use-package dired+
+  :after dired
+  :config
+  (add-hook 'dired-before-readin-hook 'diredp-breadcrumbs-in-header-line-mode))
+;; https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline2
+(use-package quick-preview
+  :ensure t
+  :init
+  (global-set-key (kbd "C-c q") 'quick-preview-at-point)
+  (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point))
+
+(use-package dired-x
+    :after dired
+    :init (setq-default dired-omit-files-p t)
+    :config
+    (add-to-list 'dired-omit-extensions ".DS_Store"))
+
+(use-package! dired-aux
+   :after dired)
+(use-package! wdired  :after dired)
+
 ;; shell-pop http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/
 (use-package! shell-pop
   :bind (("C-t" . shell-pop))
@@ -142,10 +231,18 @@
   ;; need to do this manually or not picked up by `shell-pop'
   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
 
-(use-package! which-key)
+
+(use-package! gif-screencast
+  :bind
+  ("<f12>" . gif-screencast-start-or-stop))
+
+(defun insert-date ()
+  "Insert a timestamp according to locale's date and time format."
+  (interactive)
+  (insert (format-time-string "%c" (current-time))))
 
 ;; https://github.com/ema2159/centaur-tabs#my-personal-configuration
-(use-package centaur-tabs
+(use-package! centaur-tabs
    
    :config
    (setq centaur-tabs-style "bar"
