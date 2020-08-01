@@ -47,7 +47,10 @@
 (package! dired-ranger)
 (package! dired-narrow)
 (package! dired-open)
+(package! tmtxt-async-tasks :recipe (:host github :repo "tmtxt/tmtxt-async-tasks"))
+(package! tmtxt-dired-async :recipe (:host github :repo "tmtxt/tmtxt-dired-async"))
 (package! quick-preview)
+;;
 (package! helm-tramp)
 (package! org-bookmark-heading)
 (package! exwm)
