@@ -56,6 +56,9 @@
 (package! undo-tree)
 (package! dumb-jump)
 (package! elfeed)
+(package! deadgrep)
+
+
 
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
