@@ -70,8 +70,8 @@
 (package! dumb-jump)
 (package! elfeed)
 (package! deadgrep)
-
-
+(package! doct)
+(package! org-clock-convenience)
 
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s

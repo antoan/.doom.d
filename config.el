@@ -109,7 +109,32 @@
 (setq org-goto-interface 'outline-path-completion)
 
 
+(use-package! org-journal
+  :ensure t
+  :after org
+  :defer t
+  :init
+  ;; Change default prefix key; needs to be set before loading org-journal
+  (setq org-journal-prefix-key "C-c j ")
+  :config
+  (setq org-journal-dir "/mnt/Blue/org/journal"
+        org-journal-date-format "%A, %d %B %Y"))
 
+
+;; https://github.com/progfolio/doct
+(use-package doct
+  :ensure t
+  ;;recommended: defer until calling doct
+  :defer t
+  :commands (doct))
+
+;; https://github.com/jethrokuan/dots/blob/master/.doom.d/config.el
+(use-package! org-clock-convenience
+  :bind (:map org-agenda-mode-map
+              ("<S-up>" . org-clock-convenience-timestamp-up)
+              ("<S-down>" . org-clock-convenience-timestamp-down)
+              ("o" . org-clock-convenience-fill-gap)
+              ("e" . org-clock-convenience-fill-gap-both)))
 
 ;; Pocket Reader - https://github.com/alphapapa/pocket-reader.el
 (use-package! pocket-reader)
@@ -130,6 +155,7 @@
   :config
   (global-undo-tree-mode 1)) ;; https://www.emacswiki.org/emacs/UndoTree
 
+
 ;; ROSEMACS
 ;;(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
 
@@ -138,6 +164,19 @@
 ;; [[https://github.com/purcell/exec-path-from-shell][purcell/exec-path-from-shell: Make Emacs use the $PATH set up by the user's shell]]
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
+
+;; (use-package exec-path-from-shell
+;;   :ensure t
+;;   :defer f
+;;   :config
+;;   (exec-path-from-shell-copy-env "GOPATH")
+;;   (exec-path-from-shell-copy-env "SHELL")
+;;   (exec-path-from-shell-copy-env "PATH")
+;;   (when (memq window-system '(mac ns x))
+;;     (exec-path-from-shell-initialize)))
+
+
+
 
 ;; ORG ROAM config
 ;; https://org-roam.readthedocs.io/en/master/configuration/
