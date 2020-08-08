@@ -130,6 +130,8 @@
    	   ("o" . org-clock-convenience-fill-gap)
    	   ("e" . org-clock-convenience-fill-gap-both)))
 
+(use-package! bookmark+)
+
 (use-package! magithub
   :after magit
   :config
