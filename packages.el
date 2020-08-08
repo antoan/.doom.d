@@ -28,8 +28,10 @@
 (package! evil-tutor)
 (unpin! org-roam)
 (package! org-roam-server)
+(package! org-bookmark-heading)
 (package! org-roam-bibtex
   :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+(package! org-clock-convenience)
 (package! company-org-roam
   :recipe (:host github :repo "jethrokuan/company-org-roam"))
 (package! pocket-reader)
@@ -53,13 +55,13 @@
 ;;
 ;;
 (package! helm-tramp)
-(package! org-bookmark-heading)
 (package! exwm)
 (package! helm-dash)
 (package! worf)
 (package! yankpad)
 (package! emms)
 (package! git-link)
+(package! magithub)
 (package! yaml-mode)
 (package! gif-screencast
   :recipe (:host gitlab :repo "ambrevar/emacs-gif-screencast"))
@@ -71,7 +73,6 @@
 (package! elfeed)
 (package! deadgrep)
 (package! doct)
-(package! org-clock-convenience)
 
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s

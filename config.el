@@ -120,9 +120,24 @@
   (setq org-journal-dir "/mnt/Blue/org/journal"
         org-journal-date-format "%A, %d %B %Y"))
 
+(use-package! org-bookmark-heading)
+
+(use-package! org-clock-convenience
+  :ensure t
+  :bind (:map org-agenda-mode-map
+   	   ("<S-up>" . org-clock-convenience-timestamp-up)
+   	   ("<S-down>" . org-clock-convenience-timestamp-down)
+   	   ("o" . org-clock-convenience-fill-gap)
+   	   ("e" . org-clock-convenience-fill-gap-both)))
+
+(use-package! magithub
+  :after magit
+  :config
+  (magithub-feature-autoinject t)
+  (setq magithub-clone-default-directory "~/dev"))
 
 ;; https://github.com/progfolio/doct
-(use-package doct
+(use-package! doct
   :ensure t
   ;;recommended: defer until calling doct
   :defer t
