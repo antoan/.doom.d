@@ -33,8 +33,9 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; https://docs.projectile.mx/projectile/index.html
+;; https://docs.projectile.mx/projectile/index.html (setq projectile-project-search-path '("~/projects/" "~/work/"))
 (setq projectile-project-search-path '("~/dev/"))
+
 
 (use-package! smartparens
   :init
@@ -192,28 +193,23 @@
 ;;   (when (memq window-system '(mac ns x))
 ;;     (exec-path-from-shell-initialize)))
 
-
-
-
 ;; ORG ROAM config
 ;; https://org-roam.readthedocs.io/en/master/configuration/
 ;; (setq org-roam-directory "/path/to/org/")
-(use-package! org-roam)
-
 
 ;; You can then bind org-roam-jump-to-index in your configuration to access it (see Basic Install and Configuration to review how to set key-bindings).
 ;; (setq org-roam-index-file "index.org")
 
-(setq org-roam-graph-viewer "/usr/bin/chromium-browser")
-
 ;; Things to exclude from graph
 ;; (setq org-roam-graph-exclude-matcher '("private" "dailies"))
 
-;;Other options included 'ido, and 'ivy'.
-(setq org-roam-completion-system 'helm)
+  (use-package! org-roam
+    :config
+    (setq org-roam-graph-viewer "/usr/bin/chromium-browser")
+    ;;Other options included 'ido, and 'ivy'.
+    (setq org-roam-completion-system 'helm))
 
 ;; Encryption (via GPG) can be enabled for all new files by setting org-roam-encrypt-files to t.
-
 
 (use-package! org-protocol)
 (use-package! org-roam-protocol)
