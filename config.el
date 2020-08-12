@@ -41,12 +41,30 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (helm-mode 1)
 
-;;(use-package! helm)
+
+;;(use-package! helm
 ;; :init
 ;;  (map! :map helm-map
 ;;        "C-M-f" #'sp-forward-sexp))
 
- (use-package! smartparens
+(use-package! helm-ros
+ :after (helm)
+ :config
+  (global-helm-ros-mode t))
+
+;; TODO
+;; (require 'rtags-helm)
+;; (setq rtags-use-helm t)
+(use-package! rtags
+:after cc-mode
+ :config
+ (rtags-enable-standard-keybindings)
+ (setq rtags-use-helm t))
+
+(use-package! helm-rtags
+:after rtags)
+
+(use-package! smartparens
   :init
   (map! :map smartparens-mode-map
         "C-M-f" #'sp-forward-sexp

@@ -73,6 +73,9 @@
 (package! elfeed)
 (package! deadgrep)
 (package! doct)
+(package! helm-ros)
+(package! helm-rtags)
+
 
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
