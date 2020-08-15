@@ -201,8 +201,9 @@
   (global-undo-tree-mode 1)) ;; https://www.emacswiki.org/emacs/UndoTree
 
 
-;; ROSEMACS
-;;(add-to-list 'load-path "/opt/ros/kinetic/share/emacs/site-lisp")
+;; ROSEMACS - TODO WORKS on LAPTOP - but have different distro on PC - need a multimachine config to fix
+;; else we get errors when config is loaded, can look into gitstow.
+;;(add-to-list 'load-path "/opt/ros/melodic/share/emacs/site-lisp")
 
 ;;(require 'rosemacs-config)
 
