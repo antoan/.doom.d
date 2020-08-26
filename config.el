@@ -261,7 +261,7 @@
 
 ;; DIRED
 ;; https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline7
-(use-package dired
+(use-package! dired
    :config
    (setq dired-listing-switches "-lFaGh1v --group-directories-first")
    (setq dired-ls-F-marks-symlinks t)
@@ -282,18 +282,18 @@
   :init
   (map! :map dired-mode-map
         :desc "narrow" "/" #'dired-narrow-fuzzy))
-(use-package dired+
+(use-package! dired+
   :after dired
   :config
   (add-hook 'dired-before-readin-hook 'diredp-breadcrumbs-in-header-line-mode))
 ;; https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline2
-(use-package quick-preview
+(use-package! quick-preview
   :ensure t
   :init
   (global-set-key (kbd "C-c q") 'quick-preview-at-point)
   (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point))
 
-(use-package dired-x
+(use-package! dired-x
     :after dired
     :init (setq-default dired-omit-files-p t)
     :config
@@ -403,6 +403,26 @@
 	  ("g T" . centaur-tabs-backward)))
 
 (menu-bar-mode 1)
+
+(defun ros-catkin-make (dir)
+  "Run catkin_make command in DIR."
+  (interactive (list (read-directory-name "Directory: ")))
+  (let* ((default-directory dir)
+         (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
+    (compile "catkin_make"))
+  )
+
+(defun ros-catkin-make-json (dir)
+  "Run catkin_make command in DIR."
+  (interactive (list (read-directory-name "Directory: ")))
+  (let* ((default-directory dir)
+         (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
+    (compile "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ."))
+  )
+
+;; TODO
+;;(global-set-key (kbd "C-x C-r M") 'ros-catkin-make)
+;;(global-set-key (kbd "C-x C-r C-j") 'ros-catkin-make-json)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
