@@ -160,11 +160,11 @@
 
 (use-package! bookmark+)
 
-(use-package! magithub
-  :after magit
-  :config
-  (magithub-feature-autoinject t)
-  (setq magithub-clone-default-directory "~/dev"))
+;;(use-package! magithub
+;;  :after magit
+;;  :config
+;;  (magithub-feature-autoinject t)
+;;  (setq magithub-clone-default-directory "~/dev"))
 
 ;; https://github.com/progfolio/doct
 (use-package! doct
@@ -401,6 +401,8 @@
    (:map evil-normal-state-map
 	  ("g t" . centaur-tabs-forward)
 	  ("g T" . centaur-tabs-backward)))
+
+(menu-bar-mode 1)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

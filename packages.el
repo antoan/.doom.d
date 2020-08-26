@@ -75,7 +75,7 @@
 (package! doct)
 (package! helm-ros)
 (package! helm-rtags)
-
+(package! rmsbolt)
 
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
