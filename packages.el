@@ -76,7 +76,7 @@
 (package! helm-ros)
 (package! helm-rtags)
 (package! rmsbolt)
-
+(package! conda)
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
 ;;   :recipe (:host github :repo "magnars/s.el"))
