@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name:catmake-dc
+# key:
+# --
+catkin_make -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -j1
