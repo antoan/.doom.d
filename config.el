@@ -420,6 +420,10 @@
     (compile "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ."))
   )
 
+;; (use-package! gdb-mi
+;;   :init
+;;   (fmakunbound 'gdb)
+;;   (fmakunbound 'gdb-enable-debug))
 ;; TODO
 ;;(global-set-key (kbd "C-x C-r M") 'ros-catkin-make)
 ;;(global-set-key (kbd "C-x C-r C-j") 'ros-catkin-make-json)
