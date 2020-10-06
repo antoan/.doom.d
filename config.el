@@ -428,6 +428,32 @@
 ;;(global-set-key (kbd "C-x C-r M") 'ros-catkin-make)
 ;;(global-set-key (kbd "C-x C-r C-j") 'ros-catkin-make-json)
 
+(use-package! conda
+
+  :init
+    (conda-env-initialize-interactive-shells)
+    ;; if you want eshell support, include:
+    (conda-env-initialize-eshell)
+;; if you want auto-activation (see below for details), include:
+    (conda-env-autoactivate-mode t)
+  :config
+
+   (setq
+   conda-anaconda-home (expand-file-name "~/anaconda3/")
+   conda-env-home-directory (expand-file-name "~/anaconda3/") ;; as in previous example; not required
+   conda-env-subdirectory "envs"))
+
+(use-package! sx
+  :config
+  (bind-keys :prefix "C-c s"
+             :prefix-map my-sx-map
+             :prefix-docstring "Global keymap for SX."
+             ("q" . sx-tab-all-questions)
+             ("i" . sx-inbox)
+             ("o" . sx-open-link)
+             ("u" . sx-tab-unanswered-my-tags)
+             ("a" . sx-ask)
+             ("s" . sx-search)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

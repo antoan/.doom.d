@@ -77,7 +77,11 @@
 (package! helm-rtags)
 (package! rmsbolt)
 (package! conda)
+
 ;; (package! gdb-mi  :recipe (:host github :repo "weirdNox/emacs-gdb"))
+
+(package! sx)
+
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
 ;;   :recipe (:host github :repo "magnars/s.el"))
