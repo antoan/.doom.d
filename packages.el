@@ -82,6 +82,9 @@
 
 (package! sx)
 
+
+(package! regex-tool)
+
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
 ;;   :recipe (:host github :repo "magnars/s.el"))
