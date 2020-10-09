@@ -478,6 +478,15 @@
   (add-to-list 'erc-modules 'spelling)
   (erc-services-mode 1)
   (erc-update-modules))
+
+(use-package! visual-regexp
+  :config
+  (define-key global-map (kbd "C-c r") 'vr/replace)
+  (define-key global-map (kbd "C-c q") 'vr/query-replace)
+  ;; if you use multiple-cursors, this is for you:
+  (define-key global-map (kbd "C-c m") 'vr/mc-mark)
+)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
