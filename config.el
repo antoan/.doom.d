@@ -455,7 +455,7 @@
              ("a" . sx-ask)
              ("s" . sx-search)))
 
-;;https://www.reddit.com/r/emacs/comments/8ml6na/tip_how_to_make_ercun_to_use/ TEST
+;;https://www.reddit.com/r/emacs/comments/8ml6na/tip_how_to_make_erc_fun_to_use/
 (use-package! erc
   :custom
  ;(erc-autojoin-channels-alist '(("freenode.net" "#archlinux" "#bash" "#bitcoin"
