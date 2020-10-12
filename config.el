@@ -455,7 +455,7 @@
              ("a" . sx-ask)
              ("s" . sx-search)))
 
-;;https://www.reddit.com/r/emacs/comments/8ml6na/tip_how_to_make_erc_fun_to_use/
+;;https://www.reddit.com/r/emacs/comments/8ml6na/tip_how_to_make_ercun_to_use/ TEST
 (use-package! erc
   :custom
  ;(erc-autojoin-channels-alist '(("freenode.net" "#archlinux" "#bash" "#bitcoin"
@@ -479,13 +479,14 @@
   (erc-services-mode 1)
   (erc-update-modules))
 
-(use-package! visual-regexp
-  :config
-  (define-key global-map (kbd "C-c r") 'vr/replace)
-  (define-key global-map (kbd "C-c q") 'vr/query-replace)
-  ;; if you use multiple-cursors, this is for you:
-  (define-key global-map (kbd "C-c m") 'vr/mc-mark)
-)
+(use-package! visual-regexp)
+(use-package! visual-regexp-steroids :after visual-regexp)
+
+  ;; (define-key global-map (kbd "C-c r") 'vr/replace)
+  ;; (define-key global-map (kbd "C-c q") 'vr/query-replace)
+  ;; ;; if you use multiple-cursors, this is for you:
+  ;; (define-key global-map (kbd "C-c m") 'vr/mc-mark)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
