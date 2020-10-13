@@ -83,6 +83,11 @@
 (package! dired-git-info)
 (package! visual-regexp)
 (package! visual-regexp-steroids)
+
+(package! bm)
+
+(package! systemd)
+(package! helm-systemd)
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
 ;;   :recipe (:host github :repo "magnars/s.el"))
