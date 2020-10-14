@@ -78,6 +78,8 @@
 (package! rmsbolt)
 (package! conda)
 ;; (package! gdb-mi  :recipe (:host github :repo "weirdNox/emacs-gdb"))
+;;
+;;
 (package! sx)
 (package! regex-tool)
 (package! dired-git-info)
@@ -88,6 +90,8 @@
 
 (package! systemd)
 (package! helm-systemd)
+
+(package! syslog-mode)
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
 ;;   :recipe (:host github :repo "magnars/s.el"))

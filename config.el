@@ -552,6 +552,13 @@
   (add-hook 'dired-after-readin-hook 'dired-git-info-auto-enable)
 )
 
+;; https://www.emacswiki.org/emacs/SyslogMode
+(use-package syslog-mode
+  :config
+  (add-to-list 'auto-mode-alist '("/var/log.*\\'" . syslog-mode))
+  )
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
