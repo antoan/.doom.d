@@ -552,8 +552,8 @@
   (add-hook 'dired-after-readin-hook 'dired-git-info-auto-enable)
 )
 
-;; https://www.emacswiki.org/emacs/SyslogMode
-(use-package syslog-mode
+;; https://www.emacswiki.org/emacs/SyslogMode 
+(use-package! syslog-mode
   :config
   (add-to-list 'auto-mode-alist '("/var/log.*\\'" . syslog-mode))
   )

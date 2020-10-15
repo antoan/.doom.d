@@ -19,19 +19,24 @@
 ;(package! some-package)
 
 (package! helm-catkin)
+
+;; ORG-MODE
 (package! org-super-agenda)
 (package! org-ql)
 (package! org-sidebar)
 (package! helm-org-rifle)
 (package! org-ref)
 (package! org-journal)
+(package! org-clock-convenience)
+
 (package! evil-tutor)
+
+;; ORG-ROAM
 (unpin! org-roam)
 (package! org-roam-server)
 (package! org-bookmark-heading)
 (package! org-roam-bibtex
   :recipe (:host github :repo "org-roam/org-roam-bibtex"))
-(package! org-clock-convenience)
 (package! company-org-roam
   :recipe (:host github :repo "jethrokuan/company-org-roam"))
 (package! pocket-reader)
@@ -39,6 +44,7 @@
 (package! exec-path-from-shell)
 (package! bookmark+)
 (package! icicles)
+
 ;; DIRED
 (package! dired+)
 (package! dired-hacks-utils)
@@ -92,6 +98,7 @@
 (package! helm-systemd)
 
 (package! syslog-mode)
+(package! engine-mode)
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
 ;;   :recipe (:host github :repo "magnars/s.el"))
