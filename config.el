@@ -232,23 +232,28 @@
 ;; (setq org-roam-graph-exclude-matcher '("private" "dailies"))
 
   (use-package! org-roam
-      :ensure t
+      :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
       :hook
       (after-init . org-roam-mode)
-      :custom
-      (org-roam-directory "/mnt/Blue/org/roam")
+
+      :init
+      (map! :leader
+        :prefix "n"
+        :desc "org-roam" "l" #'org-roam
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+        :desc "org-roam-find-file" "f" #'org-roam-find-file
+        :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-capture" "c" #'org-roam-capture)
+      (setq org-roam-directory "/mnt/Blue/org/roam")
+
       :config
-      (setq org-roam-graph-viewer "/usr/bin/chromium-browser")
+      (setq org-roam-graph-viewer "/usr/bin/chromium")
       ;;Other options included 'ido, and 'ivy'.
       (setq org-roam-completion-system 'helm)
-      (add-to-list 'exec-path "/usr/bin/sqlite3")
-      :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
+      (add-to-list 'exec-path "/usr/bin/sqlite3"))
+
 ;; Encryption (via GPG) can be enabled for all new files by setting org-roam-encrypt-files to t.
 
 (use-package! org-protocol)
