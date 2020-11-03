@@ -98,7 +98,8 @@
 (package! helm-systemd)
 
 (package! syslog-mode)
-(package! engine-mode)
+;upgrade issue (package! engine-mode) 
+
 ;; (package! s) ;;https://github.com/magnars/s.el
 ;; (package! s
 ;;   :recipe (:host github :repo "magnars/s.el"))
