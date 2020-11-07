@@ -28,6 +28,7 @@
 (package! org-ref)
 (package! org-journal)
 (package! org-clock-convenience)
+(package! org-bullets)
 
 (package! evil-tutor)
 

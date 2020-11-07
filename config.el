@@ -161,6 +161,9 @@
    	   ("o" . org-clock-convenience-fill-gap)
    	   ("e" . org-clock-convenience-fill-gap-both)))
 
+(use-package org-bullets
+    :hook (org-mode . org-bullets-mode))
+
 (use-package! bookmark+)
 
 ;;(use-package! magithub
