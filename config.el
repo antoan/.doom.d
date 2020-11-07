@@ -128,8 +128,9 @@
                            ))
 
 ;; Org-Mode config
-; (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
- (setq org-refile-targets (quote (("/mnt/Blue/org/roam/20201027190541-refactor.org" :maxlevel . 6))))
+(setq org-agenda-files '("/mnt/Blue/org/roam/"))
+(setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
+;; (setq org-refile-targets (quote (("/mnt/Blue/org/roam/20201027190541-refactor.org" :maxlevel . 6))))
                                  ;("organizer.org" :maxlevel . 6)
                                  ;("someday.org" :maxlevel . 6))))
 (setq org-outline-path-complete-in-steps nil)         ; Refile in a single go
