@@ -99,6 +99,8 @@
 (package! helm-systemd)
 
 (package! syslog-mode)
+
+(package! dap-mode)
 ;upgrade issue (package! engine-mode) 
 
 ;; (package! s) ;;https://github.com/magnars/s.el
