@@ -583,6 +583,9 @@
   (add-to-list 'auto-mode-alist '("/var/log.*\\'" . syslog-mode))
   )
 
+;; IDE FEATURES -  LSP, DAP, Company
+;; https://github.com/daviwil/emacs-from-scratch/blob/dd9320769f3041ac1edca139496f14abe147d010/Emacs.org#ide-features-with-lsp-mode
+
 (defun efs/lsp-mode-setup ()
   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
   (lsp-headerline-breadcrumb-mode))
@@ -647,6 +650,8 @@
 
 (use-package! company-box
   :hook (company-mode . company-box-mode))
+
+;; -----------------------------------------------------------------------------
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
