@@ -101,6 +101,8 @@
 (package! syslog-mode)
 
 (package! dap-mode)
+(package! company-box)
+
 ;upgrade issue (package! engine-mode) 
 
 ;; (package! s) ;;https://github.com/magnars/s.el
