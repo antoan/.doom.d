@@ -587,17 +587,19 @@
 ;; https://github.com/daviwil/emacs-from-scratch/blob/dd9320769f3041ac1edca139496f14abe147d010/Emacs.org#ide-features-with-lsp-mode
 ;; https://emacs-lsp.github.io/lsp-mode/page/installation/#use-package
 ;;
-(defun efs/lsp-mode-setup ()
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (lsp-headerline-breadcrumb-mode))
+;;(defun efs/lsp-mode-setup ()
+;;  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+;;  (lsp-headerline-breadcrumb-mode))
 
 (use-package! lsp-mode
   :commands (lsp lsp-deferred)
-  :hook (lsp-mode . efs/lsp-mode-setup)
+ ;;  :hook (lsp-mode . efs/lsp-mode-setup)
   :init
 ;;  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
   :config
-  (lsp-enable-which-key-integration t))
+  (lsp-enable-which-key-integration t)
+  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+  (lsp-headerline-breadcrumb-mode))
 
 (use-package! lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
@@ -618,8 +620,8 @@
 
   :config
   ;; Set up Node debugging
-  (require 'dap-node)
-  (dap-node-setup) ;; Automatically installs Node debug adapter if needed
+ ;; (require 'dap-node)
+ ;; (dap-node-setup) ;; Automatically installs Node debug adapter if needed
 
   ;; Bind `C-c l d` to `dap-hydra` for easy access
   (general-define-key
@@ -629,11 +631,11 @@
 
 (use-package! python-mode
 
-  :hook (python-mode . lsp-deferred)
+ ;; :hook (python-mode . lsp-deferred)
   :custom
   ;; NOTE: Set these if Python 3 is called "python3" on your system!
-  ;; (python-shell-interpreter "python3")
-  ;; (dap-python-executable "python3")
+  (python-shell-interpreter "python3")
+  (dap-python-executable "python3")
   (dap-python-debugger 'debugpy)
   :config
   (require 'dap-python))
