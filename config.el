@@ -175,7 +175,7 @@
 
 ;; https://github.com/progfolio/doct
 (use-package! doct
-  :ensure t
+
   ;;recommended: defer until calling doct
   :defer t
   :commands (doct))
@@ -192,7 +192,7 @@
 (use-package! pocket-reader)
 
 (use-package! undo-tree
-  :ensure t
+
   :init
   (setq undo-limit 78643200)
   (setq undo-outer-limit 104857600)
@@ -219,7 +219,7 @@
   (exec-path-from-shell-initialize))
 
 ;; (use-package exec-path-from-shell
-;;   :ensure t
+
 ;;   :defer f
 ;;   :config
 ;;   (exec-path-from-shell-copy-env "GOPATH")
@@ -513,7 +513,7 @@
   ;; (define-key global-map (kbd "C-c m") 'vr/mc-mark)
 
 (use-package! bm
-         :ensure t
+
          :demand t
 
          :init
@@ -628,7 +628,7 @@
     "d" '(dap-hydra t :wk "debugger")))
 
 (use-package! python-mode
-  :ensure t
+
   :hook (python-mode . lsp-deferred)
   :custom
   ;; NOTE: Set these if Python 3 is called "python3" on your system!
