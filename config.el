@@ -269,7 +269,7 @@
 ;; (use-package! org-protocol-capture-html)
 
 (use-package! org-roam-server
-  :ensure t
+
   :config
   (setq org-roam-server-host "127.0.0.1"
         org-roam-server-port 8080
@@ -312,7 +312,7 @@
   (add-hook 'dired-before-readin-hook 'diredp-breadcrumbs-in-header-line-mode))
 ;; https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline2
 (use-package! quick-preview
-  :ensure t
+
   :init
   (global-set-key (kbd "C-c q") 'quick-preview-at-point)
   (define-key dired-mode-map (kbd "Q") 'quick-preview-at-point))
@@ -353,78 +353,79 @@
   (insert (format-time-string "%c" (current-time))))
 
 ;; https://github.com/ema2159/centaur-tabs#my-personal-configuration
-(use-package! centaur-tabs
+;;
+;; (use-package! centaur-tabs
    
-   :config
-   (setq centaur-tabs-style "bar"
-	  centaur-tabs-height 32
-	  centaur-tabs-set-icons t
-	  centaur-tabs-set-modified-marker t
-	  centaur-tabs-show-navigation-buttons t
-	  centaur-tabs-set-bar 'under
-	  x-underline-at-descent-line t)
-   (centaur-tabs-headline-match)
-   ;; (setq centaur-tabs-gray-out-icons 'buffer)
-   ;; (centaur-tabs-enable-buffer-reordering)
-   ;; (setq centaur-tabs-adjust-buffer-order t)
-   (centaur-tabs-mode t)
-   (setq uniquify-separator "/")
-   (setq uniquify-buffer-name-style 'forward)
-   (defun centaur-tabs-buffer-groups ()
-     "`centaur-tabs-buffer-groups' control buffers' group rules.
+;;    :config
+;;    (setq centaur-tabs-style "bar"
+;; 	  centaur-tabs-height 32
+;; 	  centaur-tabs-set-icons t
+;; 	  centaur-tabs-set-modified-marker t
+;; 	  centaur-tabs-show-navigation-buttons t
+;; 	  centaur-tabs-set-bar 'under
+;; 	  x-underline-at-descent-line t)
+;;    (centaur-tabs-headline-match)
+;;    ;; (setq centaur-tabs-gray-out-icons 'buffer)
+;;    ;; (centaur-tabs-enable-buffer-reordering)
+;;    ;; (setq centaur-tabs-adjust-buffer-order t)
+;;    (centaur-tabs-mode t)
+;;    (setq uniquify-separator "/")
+;;    (setq uniquify-buffer-name-style 'forward)
+;;    (defun centaur-tabs-buffer-groups ()
+;;      "`centaur-tabs-buffer-groups' control buffers' group rules.
 
- Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
- All buffer name start with * will group to \"Emacs\".
- Other buffer group by `centaur-tabs-get-group-name' with project name."
-     (list
-      (cond
-	;; ((not (eq (file-remote-p (buffer-file-name)) nil))
-	;; "Remote")
-	((or (string-equal "*" (substring (buffer-name) 0 1))
-	     (memq major-mode '(magit-process-mode
-				magit-status-mode
-				magit-diff-mode
-				magit-log-mode
-				magit-file-mode
-				magit-blob-mode
-				magit-blame-mode
-				)))
-	 "Emacs")
-	((derived-mode-p 'prog-mode)
-	 "Editing")
-	((derived-mode-p 'dired-mode)
-	 "Dired")
-	((memq major-mode '(helpful-mode
-			    help-mode))
-	 "Help")
-	((memq major-mode '(org-mode
-			    org-agenda-clockreport-mode
-			    org-src-mode
-			    org-agenda-mode
-			    org-beamer-mode
-			    org-indent-mode
-			    org-bullets-mode
-			    org-cdlatex-mode
-			    org-agenda-log-mode
-			    diary-mode))
-	 "OrgMode")
-	(t
-	 (centaur-tabs-get-group-name (current-buffer))))))
-   :hook
-   (dashboard-mode . centaur-tabs-local-mode)
-   (term-mode . centaur-tabs-local-mode)
-   (calendar-mode . centaur-tabs-local-mode)
-   (org-agenda-mode . centaur-tabs-local-mode)
-   (helpful-mode . centaur-tabs-local-mode)
-   :bind
-   ("C-<prior>" . centaur-tabs-backward)
-   ("C-<next>" . centaur-tabs-forward)
-   ("C-c t s" . centaur-tabs-counsel-switch-group)
-   ("C-c t p" . centaur-tabs-group-by-projectile-project)
-   ("C-c t g" . centaur-tabs-group-buffer-groups)
-   (:map evil-normal-state-map
-	  ("g t" . centaur-tabs-forward)
-	  ("g T" . centaur-tabs-backward)))
+;;  Group centaur-tabs with mode if buffer is derived from `eshell-mode' `emacs-lisp-mode' `dired-mode' `org-mode' `magit-mode'.
+;;  All buffer name start with * will group to \"Emacs\".
+;;  Other buffer group by `centaur-tabs-get-group-name' with project name."
+;;      (list
+;;       (cond
+;; 	;; ((not (eq (file-remote-p (buffer-file-name)) nil))
+;; 	;; "Remote")
+;; 	((or (string-equal "*" (substring (buffer-name) 0 1))
+;; 	     (memq major-mode '(magit-process-mode
+;; 				magit-status-mode
+;; 				magit-diff-mode
+;; 				magit-log-mode
+;; 				magit-file-mode
+;; 				magit-blob-mode
+;; 				magit-blame-mode
+;; 				)))
+;; 	 "Emacs")
+;; 	((derived-mode-p 'prog-mode)
+;; 	 "Editing")
+;; 	((derived-mode-p 'dired-mode)
+;; 	 "Dired")
+;; 	((memq major-mode '(helpful-mode
+;; 			    help-mode))
+;; 	 "Help")
+;; 	((memq major-mode '(org-mode
+;; 			    org-agenda-clockreport-mode
+;; 			    org-src-mode
+;; 			    org-agenda-mode
+;; 			    org-beamer-mode
+;; 			    org-indent-mode
+;; 			    org-bullets-mode
+;; 			    org-cdlatex-mode
+;; 			    org-agenda-log-mode
+;; 			    diary-mode))
+;; 	 "OrgMode")
+;; 	(t
+;; 	 (centaur-tabs-get-group-name (current-buffer))))))
+;;    :hook
+;;    (dashboard-mode . centaur-tabs-local-mode)
+;;    (term-mode . centaur-tabs-local-mode)
+;;    (calendar-mode . centaur-tabs-local-mode)
+;;    (org-agenda-mode . centaur-tabs-local-mode)
+;;    (helpful-mode . centaur-tabs-local-mode)
+;;    :bind
+;;    ("C-<prior>" . centaur-tabs-backward)
+;;    ("C-<next>" . centaur-tabs-forward)
+;;    ("C-c t s" . centaur-tabs-counsel-switch-group)
+;;    ("C-c t p" . centaur-tabs-group-by-projectile-project)
+;;    ("C-c t g" . centaur-tabs-group-buffer-groups)
+;;    (:map evil-normal-state-map
+;; 	  ("g t" . centaur-tabs-forward)
+;; 	  ("g T" . centaur-tabs-backward)))
 
 (menu-bar-mode 1)
 
@@ -434,16 +435,14 @@
   (interactive (list (read-directory-name "Directory: ")))
   (let* ((default-directory dir)
          (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
-    (compile "catkin_make"))
-  )
+    (compile "catkin_make")))
 
 (defun ros-catkin-make-json (dir)
   "Run catkin_make command in DIR."
   (interactive (list (read-directory-name "Directory: ")))
   (let* ((default-directory dir)
          (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
-    (compile "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ."))
-  )
+    (compile "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .")))
 
 ;; (use-package! gdb-mi
 ;;   :init
@@ -654,6 +653,7 @@
   
   (require 'dap-python))
 
+;; TODO use after! check if we are ovewriting base config
 (use-package! company
   :after lsp-mode
   :hook (lsp-mode . company-mode)
