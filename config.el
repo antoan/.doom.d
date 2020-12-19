@@ -591,53 +591,67 @@
 ;;  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
 ;;  (lsp-headerline-breadcrumb-mode))
 
-(use-package! lsp-mode
-  :commands (lsp lsp-deferred)
- ;;  :hook (lsp-mode . efs/lsp-mode-setup)
-  :init
-;;  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
-  :config
-  (lsp-enable-which-key-integration t)
-  (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
-  (lsp-headerline-breadcrumb-mode))
+;; (use-package! lsp-mode
+;;   :commands (lsp lsp-deferred)
+;;  ;;  :hook (lsp-mode . efs/lsp-mode-setup)
+;;   :init
+;; ;;  (setq lsp-keymap-prefix "C-c l")  ;; Or 'C-l', 's-l'
+;;    (lsp-enable-which-key-integration t)
+;;   (setq lsp-headerline-breadcrumb-segments '(path-up-to-project file symbols))
+;;   (lsp-headerline-breadcrumb-mode))
+;;   :config
 
-(use-package! lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :custom
-  (lsp-ui-doc-position 'bottom))
+(after! lsp
 
-(use-package! lsp-treemacs
-  :after lsp)
+   (setq lsp-pyls-plugins-pylint-enabled t)
+   (setq lsp-pyls-plugins-autopep8-enabled nil)
+   (setq lsp-pyls-plugins-yapf-enabled t)
+   (setq lsp-pyls-plugins-pyflakes-enabled nil))
 
-(use-package! lsp-ivy)
+(after! lsp-ui (setq lsp-headerline-breadcrumb-enable t ))
+;;  (use-package! lsp-ui
+;; ;;   :hook (lsp-mode . lsp-ui-mode)
+;;    :after lsp
+;;    :custom
+;;    (lsp-ui-sideline-show-diagnostics t))
 
-(use-package! dap-mode
-  ;; Uncomment the config below if you want all UI panes to be hidden by default!
-  ;; :custom
-  ;; (lsp-enable-dap-auto-configure nil)
-  ;; :config
-  ;; (dap-ui-mode 1)
+;; (use-package! lsp-treemacs
+;;   :after lsp)
 
-  :config
-  ;; Set up Node debugging
- ;; (require 'dap-node)
- ;; (dap-node-setup) ;; Automatically installs Node debug adapter if needed
+;; (use-package! lsp-ivy)
 
-  ;; Bind `C-c l d` to `dap-hydra` for easy access
-  (general-define-key
-    :keymaps 'lsp-mode-map
-    :prefix lsp-keymap-prefix
-    "d" '(dap-hydra t :wk "debugger")))
+;; (use-package! dap-mode
+;;   ;; Uncomment the config below if you want all UI panes to be hidden by default!
+;;   ;; :custom
+;;   ;; (lsp-enable-dap-auto-configure nil)
+;;   ;; :config
+;;   ;; (dap-ui-mode 1)
 
-(use-package! python-mode
+;;   :config
+;;   ;; Set up Node debugging
+;;  ;; (require 'dap-node)
+;;  ;; (dap-node-setup) ;; Automatically installs Node debug adapter if needed
 
- ;; :hook (python-mode . lsp-deferred)
-  :custom
+;;   ;; Bind `C-c l d` to `dap-hydra` for easy access
+;;   (general-define-key
+;;     :keymaps 'lsp-mode-map
+;;     :prefix lsp-keymap-prefix
+;;     "d" '(dap-hydra t :wk "debugger")))
+;;
+;; ;; The package is "python" but the mode is "python-mode":
+;; [[https://github.com/jwiegley/use-package][jwiegley/use-package: A use-package declaration for simplifying your .emacs]]
+;;
+(after! python
+  
+   ;; :hook (python-mode . lsp-deferred)
+
   ;; NOTE: Set these if Python 3 is called "python3" on your system!
-  (python-shell-interpreter "python3")
-  (dap-python-executable "python3")
-  (dap-python-debugger 'debugpy)
-  :config
+ 
+  (setq python-shell-interpreter "python3")
+  (setq dap-python-executable "python3")
+
+  (setq dap-python-debugger 'debugpy)
+  
   (require 'dap-python))
 
 (use-package! company

@@ -19,10 +19,12 @@
        ;;japanese
 
        :completion
-       company           ; the ultimate code completion backend
-       helm              ; the *other* search engine for love and life
+       (company +childframe +tng)         ; the ultimate code completion backend
+       (helm +fuzzy)     ;;(helm +fuzzy +childframe) THIS DOES NOT WORK FOR NOW - TINY FRAME
+       ;; [[https://github.com/hlissner/doom-emacs/issues/2540][Helm selection buffer is displayed in a tiny frame · Issue #2540 · hlissner/doom-emacs]]
+       ;;; helm the *other* search engine for love and life
        ;; ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       (ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
 
        :ui
        deft              ; notational velocity for Emacs
@@ -82,15 +84,15 @@
 
        :tools
        ansible
-       debugger          ; FIXME stepping through code, to help you add bugs
+       (debugger +lsp)          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        docker
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        ;;gist              ; interacting with github gists
-       lookup              ; navigate your code and its documentation
-       lsp
+       (lookup +dictionary +docsets +offline)              ; navigate your code and its documentation
+       (lsp +peek)
        ;;macos             ; MacOS-specific commands
        magit             ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
@@ -105,8 +107,8 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;assembly          ; assembly for fun or debugging
-       cc                ; C/C++/Obj-C madness
-       (sh +fish)                  ;
+       (cc +lsp)                ; C/C++/Obj-C madness
+
        ;;clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
@@ -116,7 +118,7 @@
        ;;(dart +flutter)   ; paint ui and not much else
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
-       emacs-lisp        ; drown in parentheses
+       (emacs-lisp +lsp)        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        faust             ; dsp, but you get to keep your soul
@@ -148,13 +150,14 @@
         +dragndrop         ; drag & drop files/images into org
         +jupyter           ; ipython/jupyter support for babel
         +present
-        +roam)          ; organize your plain life in plain text
+        +roam
+        +pandoc)          ; organize your plain life in plain text
 
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       python            ; beautiful is better than ugly
+       (python +lsp)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
@@ -163,12 +166,13 @@
        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        ;;scheme            ; a fully conniving family of lisps
-       sh                ; she sells {ba,z,fi}sh shells on the C xor
+       (sh +fish +lsp)                ; she sells {ba,z,fi}sh shells on the C xor
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;web               ; the tubes
+       (yaml +lsp)
 
        :email
        ;;(mu4e +gmail)
