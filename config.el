@@ -142,7 +142,7 @@
 
 
 (use-package! org-journal
-  :ensure t
+
   :after org
   :defer t
   :init
@@ -154,13 +154,6 @@
 
 (use-package! org-bookmark-heading)
 
-(use-package! org-clock-convenience
-  :ensure t
-  :bind (:map org-agenda-mode-map
-   	   ("<S-up>" . org-clock-convenience-timestamp-up)
-   	   ("<S-down>" . org-clock-convenience-timestamp-down)
-   	   ("o" . org-clock-convenience-fill-gap)
-   	   ("e" . org-clock-convenience-fill-gap-both)))
 
 (use-package org-bullets
     :hook (org-mode . org-bullets-mode))
@@ -334,14 +327,15 @@
 
 
 ;; shell-pop http://pragmaticemacs.com/emacs/pop-up-a-quick-shell-with-shell-pop/
-(use-package! shell-pop
-  :bind (("C-t" . shell-pop))
-  :config
-  (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
-  ;;  (setq shell-pop-term-shell "/bin/zsh")
-  (setq shell-pop-term-shell "/bin/bash")
-  ;; need to do this manually or not picked up by `shell-pop'
-  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
+;;
+;; (use-package! shell-pop
+;;   :bind (("C-t" . shell-pop))
+;;   :config
+;;   (setq shell-pop-shell-type (quote ("ansi-term" "*ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
+;;   ;;  (setq shell-pop-term-shell "/bin/zsh")
+;;   (setq shell-pop-term-shell "/bin/bash")
+;;   ;; need to do this manually or not picked up by `shell-pop'
+;;   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
 
 (use-package! gif-screencast
   :bind
@@ -448,24 +442,25 @@
 ;;   :init
 ;;   (fmakunbound 'gdb)
 ;;   (fmakunbound 'gdb-enable-debug))
+
 ;; TODO
 ;;(global-set-key (kbd "C-x C-r M") 'ros-catkin-make)
 ;;(global-set-key (kbd "C-x C-r C-j") 'ros-catkin-make-json)
 
-(use-package! conda
+;; (use-package! conda
 
-  :init
-    (conda-env-initialize-interactive-shells)
-    ;; if you want eshell support, include:
-    (conda-env-initialize-eshell)
-;; if you want auto-activation (see below for details), include:
-    (conda-env-autoactivate-mode t)
-  :config
+;;   :init
+;;     (conda-env-initialize-interactive-shells)
+;;     ;; if you want eshell support, include:
+;;     (conda-env-initialize-eshell)
+;; ;; if you want auto-activation (see below for details), include:
+;;     (conda-env-autoactivate-mode t)
+;;   :config
 
-   (setq
-   conda-anaconda-home (expand-file-name "~/anaconda3/")
-   conda-env-home-directory (expand-file-name "~/anaconda3/") ;; as in previous example; not required
-   conda-env-subdirectory "envs"))
+;;    (setq
+;;    conda-anaconda-home (expand-file-name "~/anaconda3/")
+;;    conda-env-home-directory (expand-file-name "~/anaconda3/") ;; as in previous example; not required
+;;    conda-env-subdirectory "envs"))
 
 (use-package! sx
   :config
@@ -600,12 +595,12 @@
 ;;   (lsp-headerline-breadcrumb-mode))
 ;;   :config
 
-(after! lsp
+;; (after! lsp
 
-   (setq lsp-pyls-plugins-pylint-enabled t)
-   (setq lsp-pyls-plugins-autopep8-enabled nil)
-   (setq lsp-pyls-plugins-yapf-enabled t)
-   (setq lsp-pyls-plugins-pyflakes-enabled nil))
+;;    (setq lsp-pyls-plugins-pylint-enabled t)
+;;    (setq lsp-pyls-plugins-autopep8-enabled nil)
+;;    (setq lsp-pyls-plugins-yapf-enabled t)
+;;    (setq lsp-pyls-plugins-pyflakes-enabled nil))
 
 (after! lsp-ui (setq lsp-headerline-breadcrumb-enable t ))
 ;;  (use-package! lsp-ui
@@ -653,21 +648,26 @@
   
   (require 'dap-python))
 
-;; TODO use after! check if we are ovewriting base config
-(use-package! company
-  :after lsp-mode
-  :hook (lsp-mode . company-mode)
-  :bind (:map company-active-map
-         ("<tab>" . company-complete-selection))
-        (:map lsp-mode-map
-         ("<tab>" . company-indent-or-complete-common))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-idle-delay 0.0))
+;;  use after! check if we are ovewriting base config
+;; (use-package! company
+;;   :after lsp-mode
+;;   :hook (lsp-mode . company-mode)
+;;   :bind (:map company-active-map
+;;          ("<tab>" . company-complete-selection))
+;;         (:map lsp-mode-map
+;;          ("<tab>" . company-indent-or-complete-common))
+;;   :custom
+;;   (company-minimum-prefix-length 1)
+;;   (company-idle-delay 0.0))
 
-(use-package! company-box
-  :hook (company-mode . company-box-mode))
+;; (use-package! company-box
+;;   :hook (company-mode . company-box-mode))
 
+
+
+(use-package! posframe)
+
+(use-package! command-log-mode  :after posframe)
 ;; -----------------------------------------------------------------------------
 
 (custom-set-variables
