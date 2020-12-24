@@ -39,7 +39,7 @@
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
-(helm-mode 1)
+;; (helm-mode 1)
 
 
 ;;(use-package! helm
@@ -155,7 +155,7 @@
 (use-package! org-bookmark-heading)
 
 
-(use-package org-bullets
+(use-package! org-bullets
     :hook (org-mode . org-bullets-mode))
 
 (use-package! bookmark+)
@@ -278,8 +278,8 @@
 
 ;; DIRED
 ;; https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline7
-(use-package! dired
-   :config
+(after! dired
+
    (setq dired-listing-switches "-lFaGh1v --group-directories-first")
    (setq dired-ls-F-marks-symlinks t)
    (setq ls-lisp-dirs-first t)
@@ -287,7 +287,7 @@
    (setq dired-recursive-deletes 'always))
 
 ;; http://xenodium.com/drill-down-emacs-dired-with-dired-subtree/
-(use-package! dired-subtree :ensure t
+(use-package! dired-subtree
   :after dired
   :config
   (bind-key "<tab>" #'dired-subtree-toggle dired-mode-map)
@@ -602,7 +602,9 @@
 ;;    (setq lsp-pyls-plugins-yapf-enabled t)
 ;;    (setq lsp-pyls-plugins-pyflakes-enabled nil))
 
-(after! lsp-ui (setq lsp-headerline-breadcrumb-enable t ))
+ (after! lsp-ui (setq lsp-headerline-breadcrumb-enable t ))
+
+
 ;;  (use-package! lsp-ui
 ;; ;;   :hook (lsp-mode . lsp-ui-mode)
 ;;    :after lsp
@@ -637,15 +639,13 @@
 ;;
 (after! python
   
-   ;; :hook (python-mode . lsp-deferred)
-
   ;; NOTE: Set these if Python 3 is called "python3" on your system!
  
   (setq python-shell-interpreter "python3")
   (setq dap-python-executable "python3")
 
   (setq dap-python-debugger 'debugpy)
-  
+
   (require 'dap-python))
 
 ;;  use after! check if we are ovewriting base config

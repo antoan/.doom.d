@@ -19,11 +19,15 @@
        ;;japanese
 
        :completion
-       (company +childframe +tng)         ; the ultimate code completion backend
+
+       (company +childframe)         ; the ultimate code completion backend
+                                     ;
        (helm +fuzzy)     ;;(helm +fuzzy +childframe) THIS DOES NOT WORK FOR NOW - TINY FRAME
        ;; [[https://github.com/hlissner/doom-emacs/issues/2540][Helm selection buffer is displayed in a tiny frame · Issue #2540 · hlissner/doom-emacs]]
        ;;; helm the *other* search engine for love and life
+
        ;; ido               ; the other *other* search engine...
+
        (ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
 
        :ui
@@ -75,7 +79,7 @@
        eshell            ; the elisp shell that works everywhere
        shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       ;vterm             ; the best terminal emulation in Emacs 		
+       vterm             ; the best terminal emulation in Emacs
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
@@ -139,7 +143,7 @@
        ;;lua               ; one-based indices? one-based indices
        markdown            ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       ;;nix               ; I hereby declare "nix geht mehr!"
+       nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        
        ;; ORG MODE
@@ -157,7 +161,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python +lsp +pyls +cython)            ; beautiful is better than ugly
+       (python +lsp +pyls +cython +poetry)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client

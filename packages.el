@@ -101,7 +101,7 @@
 (package! syslog-mode)
 
 ;;(package! dap-mode)
-(package! company-box)
+;;(package! company-box)
 (package! command-log-mode :recipe (:host github :repo "lewang/command-log-mode"))
 
 ;upgrade issue (package! engine-mode) 
