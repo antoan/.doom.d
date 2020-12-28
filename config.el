@@ -629,11 +629,19 @@
 ;;  ;; (dap-node-setup) ;; Automatically installs Node debug adapter if needed
 
 ;;   ;; Bind `C-c l d` to `dap-hydra` for easy access
-;;   (general-define-key
+;   (general-define-key
 ;;     :keymaps 'lsp-mode-map
 ;;     :prefix lsp-keymap-prefix
 ;;     "d" '(dap-hydra t :wk "debugger")))
-;;
+
+;; TODO Add DAP HYDRA
+;; 
+;; (after! dap
+;;    (general-define-key
+;;      :keymaps 'lsp-mode-map
+;;      :prefix lsp-keymap-prefix
+;;      "d" '(dap-hydra t :wk "debugger")))
+
 ;; ;; The package is "python" but the mode is "python-mode":
 ;; [[https://github.com/jwiegley/use-package][jwiegley/use-package: A use-package declaration for simplifying your .emacs]]
 ;;
