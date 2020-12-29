@@ -636,11 +636,18 @@
 
 ;; TODO Add DAP HYDRA
 ;; 
-;; (after! dap
-;;    (general-define-key
-;;      :keymaps 'lsp-mode-map
-;;      :prefix lsp-keymap-prefix
-;;      "d" '(dap-hydra t :wk "debugger")))
+ ;; (after! dap
+
+ ;;   (map!
+ ;;    :map lsp-mode-map "z" #'dap-hydra
+ ;;    :prefix lsp-keymap-prefix
+ ;;    :desc "hydra"))
+ ;;
+
+;;https://www.reddit.com/r/emacs/comments/doxfya/how_to_add_a_keybinding_to_an_existing_prefix/
+;; https://www.masteringemacs.org/article/mastering-key-bindings-emacs
+(map! (:leader (:prefix "c" :desc "dhydra" :nv "1" #'dap-hydra)))
+
 
 ;; ;; The package is "python" but the mode is "python-mode":
 ;; [[https://github.com/jwiegley/use-package][jwiegley/use-package: A use-package declaration for simplifying your .emacs]]
