@@ -678,11 +678,26 @@
 ;; (use-package! company-box
 ;;   :hook (company-mode . company-box-mode))
 
+;; TODO GPG pinentry
+;; (after! epa
+;;   (setenv "GPG_AGENT_INFO" nil)
+;;   (setq epg-gpg-program "gpg")
+;;   (setq epg-pinentry-mode 'loopback)
 
 
-(use-package! posframe)
+;;   ;; Start GPG agent with SSH support
+;;   ;;(shell-command "gpg-connect-agent /bye")
+;;   (pinentry-start)
 
-(use-package! command-log-mode  :after posframe)
+;;   ;; Update the TTY for gpg-agent
+;;   ;;(setenv "GPG_TTY" "/dev/pts/0")
+;;   (shell-command "gpgconf --launch-agent")
+;;   (shell-command "gpg-connect-agent updatestartuptty /bye >/dev/null"))
+
+
+;;(use-package! posframe)
+
+;;(use-package! command-log-mode  :after posframe)
 ;; -----------------------------------------------------------------------------
 
 (custom-set-variables
