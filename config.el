@@ -659,9 +659,9 @@
   (setq python-shell-interpreter "python3")
   (setq dap-python-executable "python3")
 
-  (setq dap-python-debugger 'debugpy)
+  (setq dap-python-debugger 'debugpy))
 
-  (require 'dap-python))
+;;  (require 'dap-python))
 
 ;;  use after! check if we are ovewriting base config
 ;; (use-package! company
