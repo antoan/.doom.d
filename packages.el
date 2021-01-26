@@ -104,6 +104,8 @@
 ;;(package! company-box)
 (package! command-log-mode :recipe (:host github :repo "lewang/command-log-mode"))
 
+;; TODO GPG pinentry
+;(package! pinentry)
 ;upgrade issue (package! engine-mode) 
 
 ;; (package! s) ;;https://github.com/magnars/s.el
