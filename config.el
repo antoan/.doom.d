@@ -27,7 +27,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(if (file-directory-p "/mnt/Blue/org" )(setq org-directory "/mnt/Blue/org"))
+(setq org-directory "~/org/")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -128,7 +128,7 @@
                            ))
 
 ;; Org-Mode config
-(setq org-agenda-files '("/mnt/Blue/org/roam/"))
+(setq org-agenda-files '("~/org/roam/"))
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
 ;; (setq org-refile-targets (quote (("/mnt/Blue/org/roam/20201027190541-refactor.org" :maxlevel . 6))))
                                  ;("organizer.org" :maxlevel . 6)
@@ -246,7 +246,7 @@
         :desc "org-roam-show-graph" "g" #'org-roam-show-graph
         :desc "org-roam-insert" "i" #'org-roam-insert
         :desc "org-roam-capture" "c" #'org-roam-capture)
-      (setq org-roam-directory "/mnt/Blue/org/roam")
+      (setq org-roam-directory "~/org/roam")
 
       :config
       (setq org-roam-graph-viewer "/usr/bin/chromium")
