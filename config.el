@@ -28,7 +28,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;(setq org-directory "~/org/")
-(setq org-directory "~/org")
+(setq org-directory "~/Dropbox/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -130,7 +130,7 @@
 
 ;; Org-Mode config
 ;; (setq org-agenda-files '("~/org/roam/"))
-(setq org-agenda-files '("~/org/roam/"))
+(setq org-agenda-files '("~/Dropbox/org/roam/"))
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
 ;; (setq org-refile-targets (quote (("/mnt/Blue/org/roam/20201027190541-refactor.org" :maxlevel . 6))))
                                  ;("organizer.org" :maxlevel . 6)
@@ -151,7 +151,7 @@
   ;; Change default prefix key; needs to be set before loading org-journal
   (setq org-journal-prefix-key "C-c j ")
   :config
-  (setq org-journal-dir "~/org/journal"
+  (setq org-journal-dir "~/Dropbox/org/journal"
         org-journal-date-format "%A, %d %B %Y"))
 
 (use-package! org-bookmark-heading)
@@ -260,7 +260,7 @@
   (use-package org-roam
   :ensure t
   :custom
-  (org-roam-directory (file-truename "~/org/roam"))
+  (org-roam-directory (file-truename "~/Dropbox/org/roam"))
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)
