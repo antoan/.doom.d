@@ -34,6 +34,7 @@
 
 ;; ORG-ROAM
 (unpin! org-roam)
+(package! org-roam-ui)
 (package! org-roam-server)
 (package! org-bookmark-heading)
 (package! org-roam-bibtex

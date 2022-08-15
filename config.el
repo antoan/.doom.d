@@ -28,7 +28,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 ;;(setq org-directory "~/org/")
-(setq org-directory "/mnt/Blue/org")
+(setq org-directory "~/org")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -130,7 +130,7 @@
 
 ;; Org-Mode config
 ;; (setq org-agenda-files '("~/org/roam/"))
-(setq org-agenda-files '("/mnt/Blue/org/roam/"))
+(setq org-agenda-files '("~/org/roam/"))
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
 ;; (setq org-refile-targets (quote (("/mnt/Blue/org/roam/20201027190541-refactor.org" :maxlevel . 6))))
                                  ;("organizer.org" :maxlevel . 6)
@@ -151,7 +151,7 @@
   ;; Change default prefix key; needs to be set before loading org-journal
   (setq org-journal-prefix-key "C-c j ")
   :config
-  (setq org-journal-dir "/mnt/Blue/org/journal"
+  (setq org-journal-dir "~/org/journal"
         org-journal-date-format "%A, %d %B %Y"))
 
 (use-package! org-bookmark-heading)
@@ -233,28 +233,62 @@
 ;; Things to exclude from graph
 ;; (setq org-roam-graph-exclude-matcher '("private" "dailies"))
 
-  (use-package! org-roam
-      :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
-      :hook
-      (after-init . org-roam-mode)
+  ;; (use-package! org-roam
+  ;;     :commands (org-roam-insert org-roam-node-find org-roam-switch-to-buffer org-roam)
+  ;;     :hook
+  ;;     (after-init . org-roam-mode)
 
-      :init
-      (map! :leader
-        :prefix "n"
-        :desc "org-roam" "l" #'org-roam
-        :desc "org-roam-insert" "i" #'org-roam-insert
-        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
-        :desc "org-roam-find-file" "f" #'org-roam-find-file
-        :desc "org-roam-show-graph" "g" #'org-roam-show-graph
-        :desc "org-roam-insert" "i" #'org-roam-insert
-        :desc "org-roam-capture" "c" #'org-roam-capture)
-      (setq org-roam-directory "/mnt/Blue/org/roam")
+  ;;     :init
 
-      :config
-      (setq org-roam-graph-viewer "/usr/bin/chromium")
-      ;;Other options included 'ido, and 'ivy'.
-      (setq org-roam-completion-system 'helm)
-      (add-to-list 'exec-path "/usr/bin/sqlite3"))
+  ;;     (map! :leader
+  ;;       :prefix "n"
+  ;;       :desc "org-roam" "l" #'org-roam
+  ;;       :desc "org-roam-insert" "i" #'org-roam-insert
+  ;;       :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+  ;;       :desc "org-roam-node-find" "f" #'org-roam-node-find
+  ;;       :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+  ;;       :desc "org-roam-insert" "i" #'org-roam-insert
+  ;;       :desc "org-roam-capture" "c" #'org-roam-capture)
+  ;;     (setq org-roam-directory "/mnt/Blue/org/roam")
+
+  ;;     :config
+  ;;     (setq org-roam-graph-viewer "/usr/bin/google-chrome")
+  ;;     ;;Other options included 'ido, and 'ivy'.
+  ;;     (setq org-roam-completion-system 'helm)
+  ;;     (add-to-list 'exec-path "/usr/bin/sqlite3"))
+  ;;
+  (use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/org/roam"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  (org-roam-db-autosync-mode)
+  ;; If using org-roam-protocol
+  (require 'org-roam-protocol))
+
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam ;; or :after org
+;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+;;         a hookable mode anymore, you're advised to pick something yourself
+;;         if you don't care about startup time, use
+;;  :hook (after-init . org-roam-ui-mode)
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start t))
 
 ;; Encryption (via GPG) can be enabled for all new files by setting org-roam-encrypt-files to t.
 
@@ -263,20 +297,6 @@
 ;; (use-package! s)
 ;; (use-package! org-protocol-capture-html)
 
-(use-package! org-roam-server
-
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
-        org-roam-server-export-inline-images t
-        org-roam-server-authenticate nil
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20))
-
-(server-start)
 
 ;; DIRED
 ;; https://writequit.org/denver-emacs/presentations/2016-05-24-elpy-and-dired.html#orgheadline7
@@ -597,7 +617,15 @@
 ;;   (lsp-headerline-breadcrumb-mode))
 ;;   :config
 
-;; (after! lsp
+(after! lsp-mode
+  (progn
+    (add-hook 'prog-mode-hook #'lsp)
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-tramp-connection
+				       "/snap/bin/clangd")
+                      :major-modes '(c-mode c++-mode)
+                      :remote? t
+                      :server-id 'clangd-remote))))
 
 ;;    (setq lsp-pyls-plugins-pylint-enabled t)
 ;;    (setq lsp-pyls-plugins-autopep8-enabled nil)

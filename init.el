@@ -154,7 +154,7 @@
         +dragndrop         ; drag & drop files/images into org
         +jupyter           ; ipython/jupyter support for babel
         +present
-        +roam
+        +roam2
         +pandoc)          ; organize your plain life in plain text
 
        ;;perl              ; write code no one else can comprehend
