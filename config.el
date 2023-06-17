@@ -48,10 +48,10 @@
 ;;  (map! :map helm-map
 ;;        "C-M-f" #'sp-forward-sexp))
 
-(use-package! helm-ros
- :after (helm)
- :config
-  (global-helm-ros-mode t))
+;; (use-package! helm-ros
+;;  :after (helm)
+;;  :config
+;;   (global-helm-ros-mode t))
 
 ;; TODO
 ;; (require 'rtags-helm)
@@ -65,21 +65,21 @@
 (use-package! helm-rtags
 :after rtags)
 
-(use-package! smartparens
-  :init
-  (map! :map smartparens-mode-map
-        "C-M-f" #'sp-forward-sexp
-        "C-M-b" #'sp-backward-sexp
-        "C-M-u" #'sp-backward-up-sexp
-        "C-M-d" #'sp-down-sexp
-        "C-M-p" #'sp-backward-down-sexp
-        "C-M-n" #'sp-up-sexp
-        "C-M-s" #'sp-splice-sexp
-        "C-)" #'sp-forward-slurp-sexp
-        "C-}" #'sp-forward-barf-sexp
-        "C-(" #'sp-backward-slurp-sexp
-        "C-M-)" #'sp-backward-slurp-sexp
-        "C-M-)" #'sp-backward-barf-sexp))
+;; (use-package! smartparens
+;;   :init
+;;   (map! :map smartparens-mode-map
+;;         "C-M-f" #'sp-forward-sexp
+;;         "C-M-b" #'sp-backward-sexp
+;;         "C-M-u" #'sp-backward-up-sexp
+;;         "C-M-d" #'sp-down-sexp
+;;         "C-M-p" #'sp-backward-down-sexp
+;;         "C-M-n" #'sp-up-sexp
+;;         "C-M-s" #'sp-splice-sexp
+;;         "C-)" #'sp-forward-slurp-sexp
+;;         "C-}" #'sp-forward-barf-sexp
+;;         "C-(" #'sp-backward-slurp-sexp
+;;         "C-M-)" #'sp-backward-slurp-sexp
+;;         "C-M-)" #'sp-backward-barf-sexp))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -113,10 +113,17 @@
 ;; see https://github.com/zaiste/.doom.d/blob/master/config.el
 
 
-(setq org-capture-templates '(("w" "Web site" entry
-  (file "")
-  "* %a :website:\n\n%U %?\n\n%:initial")))
-
+;; (setq org-capture-templates '(("w" "Web site" entry
+;;   (file "")
+;;   "* %a :website:\n\n%U %?\n\n%:initial")))
+;; (after! org
+;;   (add-to-list 'org-roam-capture-templates
+;;                '("w" "web" plain
+;;                  (function org-roam-capture--get-point)
+;;                  "* ${title} :${tag}:\n  :PROPERTIES:\n  :CREATED: %U\n  :END:\n\n  %?"
+;;                  :file-name "web/${slug}"
+;;                  :head "#+title: ${title}\n"
+;;                  :unnarrowed t)))
 
 (org-super-agenda-mode t)
 (setq
@@ -176,31 +183,32 @@
   :commands (doct))
 
 ;; https://github.com/jethrokuan/dots/blob/master/.doom.d/config.el
-(use-package! org-clock-convenience
-  :bind (:map org-agenda-mode-map
-              ("<S-up>" . org-clock-convenience-timestamp-up)
-              ("<S-down>" . org-clock-convenience-timestamp-down)
-              ("o" . org-clock-convenience-fill-gap)
-              ("e" . org-clock-convenience-fill-gap-both)))
+;; (use-package! org-clock-convenience
+;;   :bind (:map org-agenda-mode-map
+;;               ("<S-up>" . org-clock-convenience-timestamp-up)
+;;               ("<S-down>" . org-clock-convenience-timestamp-down)
+;;               ("o" . org-clock-convenience-fill-gap)
+;;               ("e" . org-clock-convenience-fill-gap-both)))
 
 ;; Pocket Reader - https://github.com/alphapapa/pocket-reader.el
-(use-package! pocket-reader)
+;; (use-package! pocket-reader)
 
-(use-package! undo-tree
+;; (use-package! undo-tree
 
-  :init
-  (setq undo-limit 78643200)
-  (setq undo-outer-limit 104857600)
-  (setq undo-strong-limit 157286400)
-  (setq undo-tree-mode-lighter " UN")
-  (setq undo-tree-auto-save-history t)
-  (setq undo-tree-enable-undo-in-region nil)
-  (setq undo-tree-history-directory-alist '(("." . "~/emacs.d/undo")))
- (add-hook 'undo-tree-visualizer-mode-hook (lambda ()
-                                              (undo-tree-visualizer-selection-mode)
-                                              (setq display-line-numbers nil)))
-  :config
-  (global-undo-tree-mode 1)) ;; https://www.emacswiki.org/emacs/UndoTree
+;;   :init
+;;   (setq undo-limit 78643200)
+;;   (setq undo-outer-limit 104857600)
+;;   (setq undo-strong-limit 157286400)
+;;   (setq undo-tree-mode-lighter " UN")
+;;   (setq undo-tree-auto-save-history t)
+;;   (setq undo-tree-enable-undo-in-region nil)
+;;   (setq undo-tree-history-directory-alist '(("." . "~/emacs.d/undo")))
+;;  (add-hook 'undo-tree-visualizer-mode-hook (lambda ()
+;;                                               (undo-tree-visualizer-selection-mode)
+;;                                               (setq display-line-numbers nil)))
+;;   :config
+;;   (global-undo-tree-mode 1))
+;; https://www.emacswiki.org/emacs/UndoTree
 
 
 ;; ROSEMACS - TODO WORKS on LAPTOP - but have different distro on PC - need a multimachine config to fix
@@ -359,9 +367,9 @@
 ;;   ;; need to do this manually or not picked up by `shell-pop'
 ;;   (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
 
-(use-package! gif-screencast
-  :bind
-  ("<f12>" . gif-screencast-start-or-stop))
+;; (use-package! gif-screencast
+;;   :bind
+;;   ("<f12>" . gif-screencast-start-or-stop))
 
 (defun insert-date ()
   "Insert a timestamp according to locale's date and time format."
@@ -446,19 +454,19 @@
 (menu-bar-mode 1)
 
 ;; TODO put in separate usr lisp file. set this up.
-(defun ros-catkin-make (dir)
-  "Run catkin_make command in DIR."
-  (interactive (list (read-directory-name "Directory: ")))
-  (let* ((default-directory dir)
-         (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
-    (compile "catkin_make")))
+;; (defun ros-catkin-make (dir)
+;;   "Run catkin_make command in DIR."
+;;   (interactive (list (read-directory-name "Directory: ")))
+;;   (let* ((default-directory dir)
+;;          (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
+;;     (compile "catkin_make")))
 
-(defun ros-catkin-make-json (dir)
-  "Run catkin_make command in DIR."
-  (interactive (list (read-directory-name "Directory: ")))
-  (let* ((default-directory dir)
-         (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
-    (compile "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .")))
+;; (defun ros-catkin-make-json (dir)
+;;   "Run catkin_make command in DIR."
+;;   (interactive (list (read-directory-name "Directory: ")))
+;;   (let* ((default-directory dir)
+;;          (compilation-buffer-name-function (lambda (major-mode-name) "*catkin_make*")))
+;;     (compile "catkin_make -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .")))
 
 ;; (use-package! gdb-mi
 ;;   :init
@@ -484,41 +492,41 @@
 ;;    conda-env-home-directory (expand-file-name "~/anaconda3/") ;; as in previous example; not required
 ;;    conda-env-subdirectory "envs"))
 
-(use-package! sx
-  :config
-  (bind-keys :prefix "C-c s"
-             :prefix-map my-sx-map
-             :prefix-docstring "Global keymap for SX."
-             ("q" . sx-tab-all-questions)
-             ("i" . sx-inbox)
-             ("o" . sx-open-link)
-             ("u" . sx-tab-unanswered-my-tags)
-             ("a" . sx-ask)
-             ("s" . sx-search)))
+;; (use-package! sx
+;;   :config
+;;   (bind-keys :prefix "C-c s"
+;;              :prefix-map my-sx-map
+;;              :prefix-docstring "Global keymap for SX."
+;;              ("q" . sx-tab-all-questions)
+;;              ("i" . sx-inbox)
+;;              ("o" . sx-open-link)
+;;              ("u" . sx-tab-unanswered-my-tags)
+;;              ("a" . sx-ask)
+;;              ("s" . sx-search)))
 
 ;;https://www.reddit.com/r/emacs/comments/8ml6na/tip_how_to_make_erc_fun_to_use/
-(use-package! erc
-  :custom
- ;(erc-autojoin-channels-alist '(("freenode.net" "#archlinux" "#bash" "#bitcoin"
- ;                                 "#emacs" "#gentoo" "#i3" "#latex" "#org-mode" "#python")))
+;; (use-package! erc
+;;   :custom
+;;  ;(erc-autojoin-channels-alist '(("freenode.net" "#archlinux" "#bash" "#bitcoin"
+;;  ;                                 "#emacs" "#gentoo" "#i3" "#latex" "#org-mode" "#python")))
 
-  (erc-autojoin-channels-alist '(("#emacs")))
-  (erc-autojoin-timing 'ident)
-  (erc-fill-function 'erc-fill-static)
-  (erc-fill-static-center 22)
-  (erc-hide-list '("JOIN" "PART" "QUIT"))
-  (erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
-  (erc-lurker-threshold-time 43200)
-;;  (erc-prompt-for-nickserv-password nil)
-  (erc-server-reconnect-attempts 5)
-  (erc-server-reconnect-timeout 3)
-  (erc-track-exclude-types '("JOIN" "MODE" "NICK" "PART" "QUIT"
-                             "324" "329" "332" "333" "353" "477"))
-  :config
-  (add-to-list 'erc-modules 'notifications)
-  (add-to-list 'erc-modules 'spelling)
-  (erc-services-mode 1)
-  (erc-update-modules))
+;;   (erc-autojoin-channels-alist '(("#emacs")))
+;;   (erc-autojoin-timing 'ident)
+;;   (erc-fill-function 'erc-fill-static)
+;;   (erc-fill-static-center 22)
+;;   (erc-hide-list '("JOIN" "PART" "QUIT"))
+;;   (erc-lurker-hide-list '("JOIN" "PART" "QUIT"))
+;;   (erc-lurker-threshold-time 43200)
+;; ;;  (erc-prompt-for-nickserv-password nil)
+;;   (erc-server-reconnect-attempts 5)
+;;   (erc-server-reconnect-timeout 3)
+;;   (erc-track-exclude-types '("JOIN" "MODE" "NICK" "PART" "QUIT"
+;;                              "324" "329" "332" "333" "353" "477"))
+;;   :config
+;;   (add-to-list 'erc-modules 'notifications)
+;;   (add-to-list 'erc-modules 'spelling)
+;;   (erc-services-mode 1)
+;;   (erc-update-modules))
 
 (use-package! visual-regexp)
 (use-package! visual-regexp-steroids :after visual-regexp)
@@ -676,7 +684,7 @@
 
 ;;https://www.reddit.com/r/emacs/comments/doxfya/how_to_add_a_keybinding_to_an_existing_prefix/
 ;; https://www.masteringemacs.org/article/mastering-key-bindings-emacs
-(map! (:leader (:prefix "c" :desc "dhydra" :nv "1" #'dap-hydra)))
+;; (map! (:leader (:prefix "c" :desc "dhydra" :nv "1" #'dap-hydra)))
 
 
 ;; ;; The package is "python" but the mode is "python-mode":
