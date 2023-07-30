@@ -625,22 +625,22 @@
 ;;   (lsp-headerline-breadcrumb-mode))
 ;;   :config
 
-(after! lsp-mode
-  (progn
-    (add-hook 'prog-mode-hook #'lsp)
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-tramp-connection
-				       "/snap/bin/clangd")
-                      :major-modes '(c-mode c++-mode)
-                      :remote? t
-                      :server-id 'clangd-remote))))
+;; (after! lsp-mode
+;;   (progn
+;;     (add-hook 'prog-mode-hook #'lsp)
+;;     (lsp-register-client
+;;      (make-lsp-client :new-connection (lsp-tramp-connection
+;; 				       "/snap/bin/clangd")
+;;                       :major-modes '(c-mode c++-mode)
+;;                       :remote? t
+;;                       :server-id 'clangd-remote))))
 
 ;;    (setq lsp-pyls-plugins-pylint-enabled t)
 ;;    (setq lsp-pyls-plugins-autopep8-enabled nil)
 ;;    (setq lsp-pyls-plugins-yapf-enabled t)
 ;;    (setq lsp-pyls-plugins-pyflakes-enabled nil))
 
- (after! lsp-ui (setq lsp-headerline-breadcrumb-enable t ))
+ ;; (after! lsp-ui (setq lsp-headerline-breadcrumb-enable t ))
 
 
 ;;  (use-package! lsp-ui
@@ -690,14 +690,14 @@
 ;; ;; The package is "python" but the mode is "python-mode":
 ;; [[https://github.com/jwiegley/use-package][jwiegley/use-package: A use-package declaration for simplifying your .emacs]]
 ;;
-(after! python
-  
-  ;; NOTE: Set these if Python 3 is called "python3" on your system!
- 
-  (setq python-shell-interpreter "python3")
-  (setq dap-python-executable "python3")
+;; (after! python
 
-  (setq dap-python-debugger 'debugpy))
+;;   ;; NOTE: Set these if Python 3 is called "python3" on your system!
+
+;;   (setq python-shell-interpreter "python3")
+;;   (setq dap-python-executable "python3")
+
+;;   (setq dap-python-debugger 'debugpy))
 
 ;;  (require 'dap-python))
 
