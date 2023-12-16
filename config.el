@@ -137,7 +137,7 @@
 
 ;; Org-Mode config
 ;; (setq org-agenda-files '("~/org/roam/"))
-(setq org-agenda-files '("gpt-dev" "agenda.org"))
+(setq org-agenda-files '("20230615195249-gpt_dev.org" "20220414172206-agenda.org"))
 (setq org-refile-targets '((org-agenda-files . (:maxlevel . 6))))
 ;; (setq org-refile-targets (quote (("/mnt/Blue/org/roam/20201027190541-refactor.org" :maxlevel . 6))))
                                  ;("organizer.org" :maxlevel . 6)
