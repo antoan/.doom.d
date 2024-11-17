@@ -20,7 +20,7 @@
 
        :completion
 
-       (company +childframe)         ; the ultimate code completion backend
+       ;;(company +childframe)         ; the ultimate code completion backend
                                      ;
        (helm +fuzzy)     ;;(helm +fuzzy +childframe) THIS DOES NOT WORK FOR NOW - TINY FRAME
        ;; [[https://github.com/hlissner/doom-emacs/issues/2540][Helm selection buffer is displayed in a tiny frame · Issue #2540 · hlissner/doom-emacs]]

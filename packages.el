@@ -17,7 +17,7 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
-
+(package! gptel)
 (package! helm-catkin)
 
 ;; ORG-MODE

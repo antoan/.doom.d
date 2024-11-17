@@ -1,3 +1,4 @@
 /custom.el
 flycheck_config.el
 flycheck_init.el
+.aider*

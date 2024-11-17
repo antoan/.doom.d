@@ -40,6 +40,11 @@
 ;; (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
+
+;; TODO replace with: set gptel-api-key to a function which returns the key, gets in from enviroment
+(use-package! gptel
+ :config
+ (setq! gptel-api-key "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"))
 ;; (helm-mode 1)
 
 
